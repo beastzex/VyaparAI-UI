@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VyaparAI - Your AI Co-Founder</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">Vyapar<span>AI</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Meet Your AI Co-Founder</h1>
+            <p class="subtitle">Automate finances, unlock growth, and gain peace of mind. All via WhatsApp or our web interface.</p>
+            <div id="upload-container" class="scroll-reveal">
+                <h2>Process Your Document</h2>
+                <div id="drop-area">
+                    <p>Drag & Drop your ledger image/PDF here, or click to select</p>
+                    <input type="file" id="file-input" accept="image/*,application/pdf" hidden>
+                    <button id="browse-button" class="btn-secondary">Browse Files</button>
+                </div>
+                <p id="file-name-display"></p>
+                <button id="upload-button" class="btn-primary" disabled>Upload & Process</button>
+                <div id="status-section" class="hidden">
+                    <h3>Processing Status</h3>
+                    <div class="spinner hidden" id="loading-spinner"></div>
+                    <div id="status-updates"></div>
+                </div>
+                <div id="results-section" class="hidden">
+                    <h3>Results</h3>
+                    <pre id="results-output"></pre>
+                </div>
+            </div>
+        </div>
+        <div class="parallax-bg"></div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container scroll-reveal">
+            <h2>About VyaparAI</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>India's economy thrives on its 60 million+ small businesses. Yet, entrepreneurs face daily hurdles: mountains of paperwork, complex tax compliance (GST, ITR), and the constant stress of managing operations reactively.</p>
+                    <p>VyaparAI is your autonomous AI co-founder, built to eliminate this friction. We transform handwritten notes or digital documents into actionable insights and automated tasks. Our AI acts as your virtual CA and COO, available 24/7 via WhatsApp or this web dashboard.</p>
+                    <p>From seamless bookkeeping and intelligent tax optimization to proactive inventory management and competitor analysis, VyaparAI empowers you to focus on what truly matters – growing your business.</p>
+                </div>
+                <div class="about-image">
+                                   </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <div class="container scroll-reveal">
+            <h2>Our Core Services</h2>
+            <div class="service-cards">
+                <div class="service-card neon-border">
+                    <div class="card-icon">📊</div>
+                    <h3>Automated Finance & Tax</h3>
+                    <p>Snap a photo, get automated bookkeeping, invoicing, real-time GST calculation, ITC management, and proactive tax-saving advice.</p>
+                </div>
+                <div class="service-card neon-border">
+                    <div class="card-icon">🚀</div>
+                    <h3>Proactive Operations</h3>
+                    <p>Receive timely low-stock alerts, get competitor price checks, and gain insights into sales trends to optimize your operations.</p>
+                </div>
+                <div class="service-card neon-border">
+                    <div class="card-icon">💬</div>
+                    <h3>Zero-Friction Interface</h3>
+                    <p>Interact seamlessly via WhatsApp – the app you already use – or utilize this intuitive web dashboard for deeper analysis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container scroll-reveal">
+            <h2>Get In Touch</h2>
+            <p>Have questions or want to learn more? Reach out to us!</p>
+            <p>Email: <a href="mailto:akshatarya2507@gmail.com">akshatarya2507@gmail.com</a></p>
+            </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 VyaparAI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

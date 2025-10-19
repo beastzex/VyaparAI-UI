@@ -1,0 +1,516 @@
+/* --- Base & Dark Theme --- */
+:root {
+    --bg-color: #1a1a2e; /* Dark blue/purple */
+    --primary-color: #e0f2fe; /* Light blue text */
+    --secondary-color: #a7d8f9; /* Slightly darker light blue */
+    --accent-color: #5d5dff; /* Vibrant blue/purple accent */
+    --neon-color: #00f2ff; /* Cyan neon */
+    --card-bg: #2a2a3e;
+    --border-color: #40405c;
+    --text-muted: #adb5bd;
+
+    --scroll-animation-delay: 0.2s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for nav links */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    color: var(--primary-color);
+    background-color: var(--bg-color);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--neon-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+/* Underline effect for headings */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--neon-color);
+    border-radius: 2px;
+}
+
+section {
+    padding: 80px 0;
+    position: relative; /* Needed for parallax/animations */
+    overflow: hidden; /* Contain scroll reveals */
+}
+
+/* --- Navigation --- */
+.navbar {
+    background: rgba(26, 26, 46, 0.85); /* Slightly transparent */
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.logo span {
+    color: var(--neon-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+.nav-links li {
+    margin-left: 2rem;
+}
+.nav-links a {
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+    padding-bottom: 5px; /* Space for underline effect */
+    position: relative;
+}
+.nav-links a::after { /* Underline animation */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--neon-color);
+    transition: width 0.3s ease;
+}
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+.nav-links a:hover, .nav-links a.active {
+    color: var(--neon-color);
+}
+
+/* --- Hero Section --- */
+.hero {
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 120px; /* Increased padding for navbar */
+    padding-bottom: 60px;
+    position: relative;
+    overflow: hidden; /* For parallax bg */
+}
+
+.hero-content {
+    z-index: 1; /* Keep content above parallax bg */
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 3.8rem); /* Responsive font size */
+    margin-bottom: 1rem;
+    /* Optional: Add a subtle text shadow */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero .subtitle {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    color: var(--secondary-color);
+    max-width: 650px;
+    margin: 0 auto 2.5rem auto;
+}
+
+/* Simple Parallax Background */
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Replace with your background image */
+    background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDN8fHRlY2hub2xvZ3klMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTY4MjYzMjYwOA&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;
+    background-attachment: fixed; /* Parallax effect */
+    opacity: 0.1; /* Make it very subtle */
+    z-index: 0;
+    transform: scale(1.1); /* Slightly zoom for effect */
+}
+
+
+/* --- Upload Area (within Hero) --- */
+#upload-container {
+    background: rgba(42, 42, 62, 0.8); /* Slightly transparent card */
+    backdrop-filter: blur(5px);
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 2rem auto 0 auto;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+#upload-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+}
+#upload-container h2::after {
+    width: 40px; /* Smaller underline */
+    background: var(--accent-color); /* Different color */
+}
+
+
+#drop-area {
+    border: 2px dashed var(--border-color);
+    padding: 30px;
+    background: rgba(26, 26, 46, 0.7); /* Darker, slightly transparent */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    border-radius: 8px;
+    cursor: pointer;
+}
+#drop-area.highlight {
+    background-color: rgba(58, 58, 78, 0.8);
+    border-color: var(--neon-color);
+    border-style: solid;
+}
+#drop-area p {
+    color: var(--text-muted);
+}
+
+#file-name-display {
+    color: var(--secondary-color);
+    margin-top: 15px;
+    min-height: 1.2em; /* Prevent layout shift */
+}
+
+/* Button Variants */
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    display: block; /* Make primary button block level */
+    width: 100%;
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(93, 93, 255, 0.3);
+}
+.btn-primary:hover {
+    background-color: #4a4aff;
+    box-shadow: 0 6px 20px rgba(93, 93, 255, 0.5);
+    transform: translateY(-2px);
+}
+.btn-primary:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+.btn-primary:active:not(:disabled) {
+     transform: scale(0.98);
+     box-shadow: 0 2px 10px rgba(93, 93, 255, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--neon-color);
+    padding: 10px 20px;
+    border: 1px solid var(--neon-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+    display: inline-block;
+    margin-top: 10px;
+}
+.btn-secondary:hover {
+    background-color: rgba(0, 242, 255, 0.1); /* Subtle neon bg */
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+.btn-secondary:active {
+     transform: scale(0.98);
+}
+
+
+/* --- Status & Results (within Upload Container) --- */
+#status-section h3, #results-section h3 {
+    text-align: left;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border-color);
+}
+#status-section h3::after, #results-section h3::after {
+    content: none; /* Remove global underline for these */
+}
+
+.hidden { display: none !important; } /* Use important for reliable hiding */
+
+#status-updates p {
+    background-color: var(--bg-color);
+    padding: 10px 15px;
+    border-left: 4px solid var(--neon-color);
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: var(--secondary-color);
+    opacity: 0;
+    animation: fadeInSlideUp 0.5s ease forwards;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#results-output {
+    background-color: #11111f; /* Even darker */
+    color: #9fefa3; /* Softer green */
+    font-family: monospace;
+    font-size: 0.9rem;
+    padding: 20px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 350px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    opacity: 0;
+    animation: fadeInSlideUp 0.5s ease 0.2s forwards;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Spinner (adjust color) */
+.spinner {
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--neon-color);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    animation: spin 1s linear infinite;
+    margin: 25px auto;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- About Us Section --- */
+.about-section {
+    background-color: var(--card-bg); /* Slightly different bg */
+}
+.about-content {
+    display: grid; /* Use grid for better responsive control */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: center;
+    gap: 3rem;
+}
+.about-text p {
+    margin-bottom: 1.2rem;
+    color: var(--secondary-color);
+}
+.about-image {
+    text-align: center;
+}
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-color);
+}
+
+/* --- Services Section --- */
+.services-section {
+    background-color: var(--bg-color);
+}
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem; /* Increased gap */
+}
+
+.service-card {
+    background: var(--card-bg);
+    padding: 35px 30px; /* Increased padding */
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent; /* Start transparent for smooth transition */
+    transition: transform 0.3s ease, box-shadow 0.4s ease, border-color 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.service-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    border-color: rgba(0, 242, 255, 0.3); /* Add subtle border on hover too */
+}
+
+/* Neon Border Effect */
+.neon-border::before, .neon-border::after {
+    content: '';
+    position: absolute;
+    inset: -2px; /* Covers border area */
+    z-index: -1;
+    background: conic-gradient(
+        from var(--angle),
+        transparent 20%,
+        var(--neon-color),
+        var(--accent-color),
+        transparent 80%
+    );
+    border-radius: 12px; /* Match card radius + border */
+    animation: spinNeon 5s linear infinite paused; /* Paused initially */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    --angle: 0deg; /* CSS variable for animation */
+}
+.neon-border::after { /* Second layer for density */
+    filter: blur(10px);
+    animation-direction: reverse;
+}
+.service-card:hover::before, .service-card:hover::after {
+    opacity: 0.8;
+    animation-play-state: running; /* Start animation on hover */
+}
+/* Keyframes for the conic gradient spin */
+@property --angle { /* Enable animation for custom property */
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+@keyframes spinNeon {
+    to { --angle: 360deg; }
+}
+
+
+.card-icon {
+    font-size: 3.5rem; /* Larger icon */
+    margin-bottom: 1.5rem;
+    display: inline-block; /* Allows text shadow */
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.5); /* Icon glow */
+}
+.service-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+.service-card p {
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+}
+
+/* --- Contact Section --- */
+.contact-section {
+    background: var(--card-bg);
+    text-align: center;
+}
+.contact-section p {
+     color: var(--secondary-color);
+     margin-bottom: 1.5rem; /* Increased spacing */
+     font-size: 1.1rem;
+}
+
+/* --- Footer --- */
+footer {
+    padding: 2.5rem 0; /* Increased padding */
+    text-align: center;
+    margin-top: 60px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+}
+
+/* --- Scroll Reveal Animation --- */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(60px); /* Increased initial offset */
+    transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+    transition-delay: var(--scroll-animation-delay); /* Use CSS variable for potential staggering */
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fade-in/Slide-Up Animation (used for status updates) */
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive (Basic Example) --- */
+@media (max-width: 768px) {
+    .nav-links {
+        /* Consider implementing a mobile menu toggle here */
+        display: none;
+    }
+    .hero h1 {
+        font-size: 2.5rem; /* Adjusted via clamp */
+    }
+    .hero .subtitle {
+         font-size: 1rem; /* Adjusted via clamp */
+    }
+    .about-content {
+        grid-template-columns: 1fr; /* Stack on mobile */
+        gap: 2rem;
+    }
+    .about-image {
+        order: -1; /* Move image above text on mobile if desired */
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+}
