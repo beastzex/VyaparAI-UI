@@ -202,7 +202,7 @@ curl -X POST http://localhost:8000/api/webhook/whatsapp
 
 ## 🏆 Hackathon Submission
 
-This project was built for the Mumbai Hackathon, focusing on:
+This project was built for the Hackathon, focusing on:
 - **Problem**: Simplifying business operations for Indian SMEs
 - **Solution**: AI-powered automation via familiar interfaces (WhatsApp)
 - **Impact**: Reducing administrative burden, improving financial compliance
